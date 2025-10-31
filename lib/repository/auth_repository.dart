@@ -25,7 +25,13 @@ class AuthRepository {
         password: password,
       );
     } on FirebaseAuthException catch (e) {
-      throw Exception("Hata Yakalandi ${e.message}");
+      if (e.code == 'email-already-in-use') {
+        throw FirebaseAuthException(
+          code: e.code,
+          message: 'Bu email zaten kullaniliyor.',
+        );
+      }
+      rethrow;
     }
   }
 }

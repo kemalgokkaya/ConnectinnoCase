@@ -28,12 +28,16 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("SİGN UP"), centerTitle: true),
+      appBar: AppBar(),
       body: Center(
         child: AspectRatio(
           aspectRatio: 5 / 4,
           child: Container(
-            decoration: BoxDecoration(color: Colors.black87),
+            decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.circular(10),
+            ),
+
             child: Form(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               key: _key,

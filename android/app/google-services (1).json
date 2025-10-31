@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "639511730113",
+    "project_id": "connectinnocase-aced3",
+    "storage_bucket": "connectinnocase-aced3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639511730113:android:d32406bafdf5222ef84140",
+        "android_client_info": {
+          "package_name": "com.example.connectinno_case"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYTZUAFwTwH4_HMS85XfXtF6iBMj-sr-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

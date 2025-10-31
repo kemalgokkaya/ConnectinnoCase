@@ -5,9 +5,9 @@ import 'package:connectinno_case/core/router/auto_route.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
+    AutoRoute(initial: true, page: SignInRoute.page),
     AutoRoute(page: HomeRoute.page),
     AutoRoute(page: NoteRoute.page),
     AutoRoute(page: SignUpRoute.page),
-    AutoRoute(initial: true, page: SignInRoute.page),
   ];
 }

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -49,20 +40,49 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDobqDbG_3YD3Rq5KAh9o_Ku9LXoK0eEFk',
+    appId: '1:639511730113:web:2bdac2b42cce2ee4f84140',
+    messagingSenderId: '639511730113',
+    projectId: 'connectinnocase-aced3',
+    authDomain: 'connectinnocase-aced3.firebaseapp.com',
+    storageBucket: 'connectinnocase-aced3.firebasestorage.app',
+    measurementId: 'G-XDNKBNJ0P8',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB5TSMuRqniGzbTnt-8OevBW5XlOS0DnYo',
-    appId: '1:761353115838:android:feb8d390094602b97966ef',
-    messagingSenderId: '761353115838',
-    projectId: 'movie-project-65bf3',
-    storageBucket: 'movie-project-65bf3.firebasestorage.app',
+    apiKey: 'AIzaSyAYTZUAFwTwH4_HMS85XfXtF6iBMj-sr-U',
+    appId: '1:639511730113:android:d32406bafdf5222ef84140',
+    messagingSenderId: '639511730113',
+    projectId: 'connectinnocase-aced3',
+    storageBucket: 'connectinnocase-aced3.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAuUPTAYqcac5INEHJu815lG9DAyJ1L6Zw',
-    appId: '1:761353115838:ios:e2145ef80f6f88f47966ef',
-    messagingSenderId: '761353115838',
-    projectId: 'movie-project-65bf3',
-    storageBucket: 'movie-project-65bf3.firebasestorage.app',
-    iosBundleId: 'com.example.movieProject',
+    apiKey: 'AIzaSyDr_y9HExeic4YDTt5cWJCd1IPMfpEZuhM',
+    appId: '1:639511730113:ios:ee2b5521d2530bbff84140',
+    messagingSenderId: '639511730113',
+    projectId: 'connectinnocase-aced3',
+    storageBucket: 'connectinnocase-aced3.firebasestorage.app',
+    iosBundleId: 'com.example.connectinnoCase',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDr_y9HExeic4YDTt5cWJCd1IPMfpEZuhM',
+    appId: '1:639511730113:ios:ee2b5521d2530bbff84140',
+    messagingSenderId: '639511730113',
+    projectId: 'connectinnocase-aced3',
+    storageBucket: 'connectinnocase-aced3.firebasestorage.app',
+    iosBundleId: 'com.example.connectinnoCase',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDobqDbG_3YD3Rq5KAh9o_Ku9LXoK0eEFk',
+    appId: '1:639511730113:web:a10b7e31d04ad964f84140',
+    messagingSenderId: '639511730113',
+    projectId: 'connectinnocase-aced3',
+    authDomain: 'connectinnocase-aced3.firebaseapp.com',
+    storageBucket: 'connectinnocase-aced3.firebasestorage.app',
+    measurementId: 'G-JXRC2CG76X',
   );
 }

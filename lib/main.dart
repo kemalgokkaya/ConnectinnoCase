@@ -1,3 +1,4 @@
+import 'package:connectinno_case/controller/theme_controller_provider.dart';
 import 'package:connectinno_case/core/router/auto_route.dart';
 import 'package:connectinno_case/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,11 +12,22 @@ void main() async {
   runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
 
   @override
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(routerConfig: appRoute.config());
+    final themeMode = ref.watch(themeModeProvider);
+    return MaterialApp.router(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: themeMode,
+      routerConfig: appRoute.config(),
+    );
   }
 }

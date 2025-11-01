@@ -24,18 +24,19 @@ class NoteRepository {
         .toList();
   }
 
-  Future<void> createNote(NoteModel note, String userId) async {
-    await _baseRepository.executeRequest(
+  Future<NoteModel> createNote(NoteModel note, String userId) async {
+    Response response = await _baseRepository.executeRequest(
       RequestType.post,
       "/note",
       body: {'title': note.title, 'note': note.note, "user_id": userId},
     );
+    return NoteModel.fromJson(response.data);
   }
 
   Future<void> updateNote(NoteModel note, String userId) async {
     await _baseRepository.executeRequest(
       RequestType.put,
-      "/notes/$userId/${note.id}",
+      "/note/$userId/${note.id}",
       body: {'title': note.title, 'content': note.note},
     );
   }
@@ -44,7 +45,7 @@ class NoteRepository {
     try {
       Response response = await _baseRepository.executeRequest(
         RequestType.delete,
-        "/notes/$userId/$id",
+        "/note/$userId/$id",
       );
       if (response.statusCode == null) return false;
       if (response.statusCode! >= 200 && response.statusCode! < 300) {

@@ -9,5 +9,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: HomeRoute.page),
     AutoRoute(page: NoteRoute.page),
     AutoRoute(page: SignUpRoute.page),
+    AutoRoute(page: DetailRoute.page),
   ];
 }

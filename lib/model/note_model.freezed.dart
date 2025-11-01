@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$NoteModel {
 
-@JsonKey(name: 'id') int? get id;@JsonKey(name: 'title') String? get title;@JsonKey(name: 'note') String? get note;
+@JsonKey(name: 'local_id') int? get localId;@JsonKey(name: 'id') int? get id;@JsonKey(name: 'title') String? get title;@JsonKey(name: 'note') String? get note;
 /// Create a copy of NoteModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $NoteModelCopyWith<NoteModel> get copyWith => _$NoteModelCopyWithImpl<NoteModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NoteModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.note, note) || other.note == note));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NoteModel&&(identical(other.localId, localId) || other.localId == localId)&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.note, note) || other.note == note));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,note);
+int get hashCode => Object.hash(runtimeType,localId,id,title,note);
 
 @override
 String toString() {
-  return 'NoteModel(id: $id, title: $title, note: $note)';
+  return 'NoteModel(localId: $localId, id: $id, title: $title, note: $note)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $NoteModelCopyWith<$Res>  {
   factory $NoteModelCopyWith(NoteModel value, $Res Function(NoteModel) _then) = _$NoteModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'id') int? id,@JsonKey(name: 'title') String? title,@JsonKey(name: 'note') String? note
+@JsonKey(name: 'local_id') int? localId,@JsonKey(name: 'id') int? id,@JsonKey(name: 'title') String? title,@JsonKey(name: 'note') String? note
 });
 
 
@@ -65,9 +65,10 @@ class _$NoteModelCopyWithImpl<$Res>
 
 /// Create a copy of NoteModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = freezed,Object? note = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? localId = freezed,Object? id = freezed,Object? title = freezed,Object? note = freezed,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+localId: freezed == localId ? _self.localId : localId // ignore: cast_nullable_to_non_nullable
+as int?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'title')  String? title, @JsonKey(name: 'note')  String? note)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'local_id')  int? localId, @JsonKey(name: 'id')  int? id, @JsonKey(name: 'title')  String? title, @JsonKey(name: 'note')  String? note)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NoteModel() when $default != null:
-return $default(_that.id,_that.title,_that.note);case _:
+return $default(_that.localId,_that.id,_that.title,_that.note);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.id,_that.title,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'title')  String? title, @JsonKey(name: 'note')  String? note)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'local_id')  int? localId, @JsonKey(name: 'id')  int? id, @JsonKey(name: 'title')  String? title, @JsonKey(name: 'note')  String? note)  $default,) {final _that = this;
 switch (_that) {
 case _NoteModel():
-return $default(_that.id,_that.title,_that.note);case _:
+return $default(_that.localId,_that.id,_that.title,_that.note);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.id,_that.title,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'id')  int? id, @JsonKey(name: 'title')  String? title, @JsonKey(name: 'note')  String? note)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'local_id')  int? localId, @JsonKey(name: 'id')  int? id, @JsonKey(name: 'title')  String? title, @JsonKey(name: 'note')  String? note)?  $default,) {final _that = this;
 switch (_that) {
 case _NoteModel() when $default != null:
-return $default(_that.id,_that.title,_that.note);case _:
+return $default(_that.localId,_that.id,_that.title,_that.note);case _:
   return null;
 
 }
@@ -211,9 +212,10 @@ return $default(_that.id,_that.title,_that.note);case _:
 @JsonSerializable()
 
 class _NoteModel implements NoteModel {
-   _NoteModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'title') this.title, @JsonKey(name: 'note') this.note});
+   _NoteModel({@JsonKey(name: 'local_id') this.localId, @JsonKey(name: 'id') this.id, @JsonKey(name: 'title') this.title, @JsonKey(name: 'note') this.note});
   factory _NoteModel.fromJson(Map<String, dynamic> json) => _$NoteModelFromJson(json);
 
+@override@JsonKey(name: 'local_id') final  int? localId;
 @override@JsonKey(name: 'id') final  int? id;
 @override@JsonKey(name: 'title') final  String? title;
 @override@JsonKey(name: 'note') final  String? note;
@@ -231,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NoteModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.note, note) || other.note == note));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NoteModel&&(identical(other.localId, localId) || other.localId == localId)&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.note, note) || other.note == note));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,note);
+int get hashCode => Object.hash(runtimeType,localId,id,title,note);
 
 @override
 String toString() {
-  return 'NoteModel(id: $id, title: $title, note: $note)';
+  return 'NoteModel(localId: $localId, id: $id, title: $title, note: $note)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$NoteModelCopyWith<$Res> implements $NoteModelCopyWith<$Re
   factory _$NoteModelCopyWith(_NoteModel value, $Res Function(_NoteModel) _then) = __$NoteModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'id') int? id,@JsonKey(name: 'title') String? title,@JsonKey(name: 'note') String? note
+@JsonKey(name: 'local_id') int? localId,@JsonKey(name: 'id') int? id,@JsonKey(name: 'title') String? title,@JsonKey(name: 'note') String? note
 });
 
 
@@ -268,9 +270,10 @@ class __$NoteModelCopyWithImpl<$Res>
 
 /// Create a copy of NoteModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = freezed,Object? note = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? localId = freezed,Object? id = freezed,Object? title = freezed,Object? note = freezed,}) {
   return _then(_NoteModel(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+localId: freezed == localId ? _self.localId : localId // ignore: cast_nullable_to_non_nullable
+as int?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
 as String?,

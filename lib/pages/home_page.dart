@@ -3,21 +3,19 @@ import 'package:connectinno_case/controller/theme_controller_provider.dart';
 import 'package:connectinno_case/core/router/auto_route.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:connectinno_case/controller/note_controller.dart';
 
 @RoutePage()
-class HomePage extends ConsumerStatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  ConsumerState<HomePage> createState() => _HomePageState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notes = ref.watch(noteControllerProvider);
 
-class _HomePageState extends ConsumerState<HomePage> {
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('Ana Sayfa'),
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16.0),
@@ -37,18 +35,46 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: 20,
+
+      body: notes.isEmpty
+          ? const Center(child: Text("Henüz not eklenmedi."))
+          : ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: notes.length,
               itemBuilder: (context, index) {
-                return ListTile(title: Text('Item $index'));
+                final note = notes[index];
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListTile(
+                    onTap: () {
+                      if (note.id == null) {
+                        return;
+                      }
+                      context.pushRoute(DetailRoute(note: note));
+                    },
+                    trailing: IconButton(
+                      onPressed: () {
+                        if (note.id == null) {
+                          return;
+                        }
+                        ref
+                            .read(noteControllerProvider.notifier)
+                            .deleteNote(note.id!);
+                      },
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                    ),
+                    title: Text(note.title ?? "(Başlik yok)"),
+                    subtitle: Text(
+                      note.note ?? "(İçerik yok)",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                );
               },
             ),
-          ),
-        ],
-      ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.pushRoute(const NoteRoute());

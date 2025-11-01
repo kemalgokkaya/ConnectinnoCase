@@ -29,25 +29,22 @@ class DatabaseBaseRepository {
   }
 
   Future _onConfigure(Database db) async {
-    // Enable foreign keys, other pragmas if needed
     await db.execute('PRAGMA foreign_keys = ON');
   }
 
   Future _createDB(Database db, int version) async {
     await db.execute('''
       CREATE TABLE notes(
-        id TEXT PRIMARY KEY,
+        local_id INTEGER PRIMARY KEY,
+        id INTEGER,
         title TEXT,
-        content TEXT
+        note TEXT
       )
     ''');
   }
 
-  Future _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    // Placeholder for migrations if schema changes in future
-  }
+  Future _onUpgrade(Database db, int oldVersion, int newVersion) async {}
 
-  // Yeni: veritabanını kapatma
   Future<void> close() async {
     if (_database != null) {
       await _database!.close();

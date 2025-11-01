@@ -6,6 +6,7 @@ part 'note_model.g.dart';
 @freezed
 abstract class NoteModel with _$NoteModel {
   factory NoteModel({
+    @JsonKey(name: 'local_id') int? localId,
     @JsonKey(name: 'id') int? id,
     @JsonKey(name: 'title') String? title,
     @JsonKey(name: 'note') String? note,

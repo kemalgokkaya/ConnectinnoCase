@@ -56,7 +56,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                 cursorColor: Colors.deepPurple,
                 maxLines: 1,
                 decoration: InputDecoration(
-                  labelText: "Başlik",
+                  labelText: "Not",
                   hintText: "Not gir...",
                   prefixIcon: const Icon(Icons.edit),
                   filled: true,

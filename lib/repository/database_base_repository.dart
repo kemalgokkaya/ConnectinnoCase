@@ -19,7 +19,18 @@ class DatabaseBaseRepository {
     Directory directory = await getApplicationDocumentsDirectory();
     String path = join(directory.path, fileName);
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(
+      path,
+      version: 1,
+      onConfigure: _onConfigure,
+      onCreate: _createDB,
+      onUpgrade: _onUpgrade,
+    );
+  }
+
+  Future _onConfigure(Database db) async {
+    // Enable foreign keys, other pragmas if needed
+    await db.execute('PRAGMA foreign_keys = ON');
   }
 
   Future _createDB(Database db, int version) async {
@@ -30,5 +41,17 @@ class DatabaseBaseRepository {
         content TEXT
       )
     ''');
+  }
+
+  Future _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    // Placeholder for migrations if schema changes in future
+  }
+
+  // Yeni: veritabanını kapatma
+  Future<void> close() async {
+    if (_database != null) {
+      await _database!.close();
+      _database = null;
+    }
   }
 }

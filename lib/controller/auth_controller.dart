@@ -1,4 +1,6 @@
 import 'package:connectinno_case/repository/auth_repository.dart';
+import 'package:connectinno_case/repository/secure_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AuthController {
@@ -10,10 +12,13 @@ class AuthController {
     required String email,
     required String password,
   }) async {
-    return authRepository.signInWithEmailAndPassword(
+    UserCredential response = await authRepository.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
+    if (response.user != null) {
+      writeUserIdToSecureStorage(response.user!.uid);
+    }
   }
 
   Future<void> signUpWithEmailAndPassword({

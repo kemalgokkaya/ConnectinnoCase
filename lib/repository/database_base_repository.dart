@@ -3,11 +3,11 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 
-class DatabaseHelper {
-  static final DatabaseHelper instance = DatabaseHelper._init();
+class DatabaseBaseRepository {
+  static final DatabaseBaseRepository instance = DatabaseBaseRepository._init();
   static Database? _database;
 
-  DatabaseHelper._init();
+  DatabaseBaseRepository._init();
 
   Future<Database> get database async {
     if (_database != null) return _database!;

@@ -44,8 +44,8 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
                       vertical: 20,
                       horizontal: 20,
                     ),
@@ -59,9 +59,9 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     child: TextFormField(
                       controller: _emailContoller,
                       decoration: InputDecoration(
-                        icon: Icon(Icons.email, color: Colors.white),
+                        icon: const Icon(Icons.email, color: Colors.white),
                         labelText: "E-Mail",
-                        labelStyle: TextStyle(color: Colors.white),
+                        labelStyle: const TextStyle(color: Colors.white),
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -74,7 +74,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                         }
                         return "Incorrect Format";
                       },
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                   Padding(
@@ -83,14 +83,14 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                       obscureText: true,
                       controller: _passwordContoller,
                       decoration: InputDecoration(
-                        icon: Icon(Icons.password, color: Colors.white),
+                        icon: const Icon(Icons.password, color: Colors.white),
                         labelText: "Password",
-                        labelStyle: TextStyle(color: Colors.white),
+                        labelStyle: const TextStyle(color: Colors.white),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Password is required";
@@ -103,7 +103,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     padding: const EdgeInsets.all(10.0),
                     child: Center(
                       child: MaterialButton(
-                        child: Text(
+                        child: const Text(
                           "SİGN UP",
                           style: TextStyle(color: Colors.white, fontSize: 18),
                         ),
@@ -116,10 +116,10 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                                   password: _passwordContoller.text.trim(),
                                 );
 
-                            context.pushRoute(SignInRoute());
+                            context.pushRoute(const SignInRoute());
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content: Text("Email is Incorrect Format!"),
                                 backgroundColor: Colors.red,
                               ),

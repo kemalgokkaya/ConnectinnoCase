@@ -4,16 +4,16 @@ final ThemeData customDarkTheme = ThemeData(
   brightness: Brightness.dark,
   scaffoldBackgroundColor: Colors.white,
 
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,
     foregroundColor: Colors.white,
   ),
-  colorScheme: ColorScheme.dark(
+  colorScheme: const ColorScheme.dark(
     primary: Colors.white,
     secondary: Colors.white,
-    surface: const Color.fromARGB(255, 255, 255, 255),
+    surface: Color.fromARGB(255, 255, 255, 255),
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     bodyLarge: TextStyle(color: Colors.white, fontSize: 18),
     bodyMedium: TextStyle(color: Colors.white),
   ),

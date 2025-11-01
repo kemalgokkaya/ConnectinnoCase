@@ -1,15 +1,20 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:connectinno_case/controller/note_controller.dart';
+import 'package:connectinno_case/model/note_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
-class NotePage extends StatefulWidget {
+class NotePage extends ConsumerStatefulWidget {
   const NotePage({super.key});
 
   @override
-  State<NotePage> createState() => _NotePageState();
+  ConsumerState<NotePage> createState() => _NotePageState();
 }
 
-class _NotePageState extends State<NotePage> {
+class _NotePageState extends ConsumerState<NotePage> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController contentController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,15 +23,16 @@ class _NotePageState extends State<NotePage> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: TextField(
+                controller: titleController,
                 maxLength: 50,
                 cursorColor: Colors.deepPurple,
                 maxLines: 1,
                 decoration: InputDecoration(
                   labelText: "Başlik",
                   hintText: "Not gir...",
-                  prefixIcon: Icon(Icons.edit),
+                  prefixIcon: const Icon(Icons.edit),
                   filled: true,
                   fillColor: Colors.grey.shade100,
                   border: OutlineInputBorder(
@@ -35,23 +41,24 @@ class _NotePageState extends State<NotePage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.deepPurple),
+                    borderSide: const BorderSide(color: Colors.deepPurple),
                   ),
                 ),
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 2,
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: TextField(
+                controller: contentController,
                 cursorColor: Colors.deepPurple,
                 maxLines: 1,
                 decoration: InputDecoration(
                   labelText: "Başlik",
                   hintText: "Not gir...",
-                  prefixIcon: Icon(Icons.edit),
+                  prefixIcon: const Icon(Icons.edit),
                   filled: true,
                   fillColor: Colors.grey.shade100,
                   border: OutlineInputBorder(
@@ -60,10 +67,10 @@ class _NotePageState extends State<NotePage> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: Colors.deepPurple),
+                    borderSide: const BorderSide(color: Colors.deepPurple),
                   ),
                 ),
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
           ],
@@ -71,9 +78,16 @@ class _NotePageState extends State<NotePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.back();
+          ref
+              .read(noteControllerProvider.notifier)
+              .createNote(
+                NoteModel(
+                  title: titleController.text,
+                  note: contentController.text,
+                ),
+              );
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.save),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );

@@ -30,7 +30,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
         child: AspectRatio(
           aspectRatio: 1,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.black87,
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
@@ -39,8 +39,8 @@ class _SignInPageState extends ConsumerState<SignInPage> {
               key: _formKey,
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
                       vertical: 10,
                       horizontal: 10,
                     ),
@@ -59,14 +59,14 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                         }
                         return null;
                       },
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        icon: Icon(Icons.email_sharp, color: Colors.white),
+                        icon: const Icon(Icons.email_sharp, color: Colors.white),
                         labelText: "E-Mail",
-                        labelStyle: TextStyle(color: Colors.white54),
+                        labelStyle: const TextStyle(color: Colors.white54),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
+                          borderSide: const BorderSide(color: Colors.white),
                         ),
                       ),
                     ),
@@ -82,11 +82,11 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                         }
                         return null;
                       },
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        icon: Icon(Icons.password, color: Colors.white),
+                        icon: const Icon(Icons.password, color: Colors.white),
                         labelText: "Password",
-                        labelStyle: TextStyle(color: Colors.white54),
+                        labelStyle: const TextStyle(color: Colors.white54),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -103,9 +103,9 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                       children: [
                         InkWell(
                           onTap: () {
-                            context.pushRoute(SignUpRoute());
+                            context.pushRoute(const SignUpRoute());
                           },
-                          child: Text(
+                          child: const Text(
                             "Don't you have an account? SİGN UP",
                             style: TextStyle(color: Colors.white),
                           ),
@@ -120,7 +120,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       minWidth: double.infinity,
-                      child: Text(
+                      child: const Text(
                         "SIGN IN",
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
@@ -137,12 +137,12 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                                 );
                             if (!context.mounted) return;
                             debugPrint("Giriş başarili");
-                            context.replaceRoute(HomeRoute());
+                            context.replaceRoute(const HomeRoute());
                           } catch (e) {
                             if (!context.mounted) return;
                             debugPrint("$e");
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
+                              const SnackBar(
                                 content: Text(
                                   "E-mail veya şifrenizi kontrol ediniz",
                                 ),

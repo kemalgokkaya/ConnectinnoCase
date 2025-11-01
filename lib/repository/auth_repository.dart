@@ -8,11 +8,15 @@ class AuthRepository {
 
   AuthRepository({required this.firebaseFirestore, required this.auth});
 
-  Future<void> signInWithEmailAndPassword({
+  Future<UserCredential> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
-    await auth.signInWithEmailAndPassword(email: email, password: password);
+    UserCredential response = await auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return response;
   }
 
   Future<void> signUpWithEmailAndPassword({

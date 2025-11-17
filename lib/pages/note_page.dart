@@ -18,63 +18,78 @@ class _NotePageState extends ConsumerState<NotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Note Page')),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                controller: titleController,
-                maxLength: 50,
-                cursorColor: Colors.deepPurple,
-                maxLines: 1,
-                decoration: InputDecoration(
-                  labelText: "Başlik",
-                  hintText: "Not gir...",
-                  prefixIcon: const Icon(Icons.edit),
-                  filled: true,
-                  fillColor: Colors.grey.shade100,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Colors.deepPurple),
-                  ),
+      appBar: AppBar(title: const Text('Create Notes')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 40.0, left: 16.0, right: 16.0),
+            child: TextField(
+              controller: titleController,
+              maxLength: 50,
+              cursorColor: Colors.deepPurple,
+              maxLines: 1,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.black),
                 ),
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 2,
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                controller: contentController,
-                cursorColor: Colors.deepPurple,
-                maxLines: 1,
-                decoration: InputDecoration(
-                  labelText: "Not",
-                  hintText: "Not gir...",
-                  prefixIcon: const Icon(Icons.edit),
-                  filled: true,
-                  fillColor: Colors.grey.shade100,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Colors.deepPurple),
-                  ),
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 12,
                 ),
-                style: const TextStyle(fontSize: 16),
+                labelText: "Title",
+                labelStyle: const TextStyle(fontSize: 16, color: Colors.black),
+                hintText: "Enter Title...",
+                hintStyle: const TextStyle(fontSize: 12, color: Colors.black),
+                prefixIcon: const Icon(Icons.edit, color: Colors.black),
+                filled: true,
+                fillColor: Colors.grey.shade100,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.deepPurple),
+                ),
               ),
+              style: const TextStyle(fontSize: 16),
             ),
-          ],
-        ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(top: 40.0, left: 16.0, right: 16.0),
+            child: TextField(
+              maxLength: 500,
+              controller: contentController,
+              cursorColor: Colors.deepPurple,
+              maxLines: 5,
+              textAlignVertical: TextAlignVertical.top,
+              decoration: InputDecoration(
+                labelText: "Not",
+                labelStyle: const TextStyle(fontSize: 16, color: Colors.black),
+                hintText: "Not gir...",
+                prefixIcon: const Icon(Icons.edit, color: Colors.black),
+                filled: true,
+                fillColor: Colors.grey.shade100,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.black),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.deepPurple),
+                ),
+
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 50,
+                  horizontal: 12,
+                ),
+              ),
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -86,6 +101,7 @@ class _NotePageState extends ConsumerState<NotePage> {
                   note: contentController.text,
                 ),
               );
+          context.back();
         },
         child: const Icon(Icons.save),
       ),

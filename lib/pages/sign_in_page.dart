@@ -26,6 +26,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.black87, centerTitle: true),
       body: Center(
         child: AspectRatio(
           aspectRatio: 1,
@@ -40,10 +41,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
               child: Column(
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 10,
-                    ),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     child: Text(
                       "Sign In",
                       style: TextStyle(color: Colors.white, fontSize: 25),
@@ -61,7 +59,10 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                       },
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                        icon: const Icon(Icons.email_sharp, color: Colors.white),
+                        icon: const Icon(
+                          Icons.email_sharp,
+                          color: Colors.white,
+                        ),
                         labelText: "E-Mail",
                         labelStyle: const TextStyle(color: Colors.white54),
                         border: OutlineInputBorder(
@@ -107,7 +108,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                           },
                           child: const Text(
                             "Don't you have an account? SİGN UP",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ),
                       ],
@@ -122,7 +123,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                       minWidth: double.infinity,
                       child: const Text(
                         "SIGN IN",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {

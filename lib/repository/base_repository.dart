@@ -36,7 +36,6 @@ class DataBaseRepository {
     AppLogger.log("Body => ${jsonEncode(body)}");
 
     try {
-      //switch expression
       response = await switch (requestType) {
         RequestType.get => dio.get(path, data: body),
         RequestType.post => dio.post(path, data: body),
